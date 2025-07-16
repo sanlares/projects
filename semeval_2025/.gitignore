@@ -16,6 +16,7 @@ log/
 *.csv
 *.json
 *.txt
+!requirements.txt
 *.log
 models/
 .DS_Store
