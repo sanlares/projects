@@ -318,16 +318,16 @@ Table~\ref{tab:prefix-experiments} shows the impact of corpus reduction on the f
 \begin{table}[h]
   \centering
   \small
-  \begin{tabular}{p{2.5cm}p{1.8cm}p{1.8cm}c}
+  \begin{tabular}{p{1.6cm}p{1.8cm}p{1.8cm}c}
     \hline
     \textbf{Model} & \textbf{Posts Prefix} & \textbf{Facts Prefix} & \textbf{S@10} \\
     \hline
-    multilingual-e5 & query: & passage: & \textbf{0.934} \\
-    multilingual-e5 & -- & -- & 0.933 \\
-    multilingual-e5 & post: & fact check: & 0.934 \\
-    multilingual-e5 & This is a post... & This is a fact... & 0.936 \\
-    multilingual-e5 & <[language]> & -- & 0.933 \\
-    multilingual-e5 & The following... & The following... & 0.934 \\
+    multi-e5 & query: & passage: & \textbf{0.934} \\
+    multi-e5 & -- & -- & 0.933 \\
+    multi-e5 & post: & fact check: & 0.934 \\
+    multi-e5 & This is a post... & This is a fact... & 0.936 \\
+    multi-e5 & <[language]> & -- & 0.933 \\
+    multi-e5 & The following... & The following... & 0.934 \\
     \hline
   \end{tabular}
   \caption{Fine-tuned model performance with different configurations when using a reduced corpus. All experiments were conducted on the validation set with a corpus containing only fact checks in the same language as the query posts, resulting in higher overall scores compared to the full corpus evaluation.}
