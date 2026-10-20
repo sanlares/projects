@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Amenities</title>
+  <meta name="description" content="See what your local public facilities cost, who looks after them and why they were built.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#results">Skip to list of places</a>
+
+  <header class="app-header">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a9 9 0 0 0-9 9c0 6.8 9 17 9 17s9-10.2 9-17a9 9 0 0 0-9-9Z" fill="currentColor"/><circle cx="16" cy="12" r="3.5" fill="var(--surface)"/></svg>
+      <div>
+        <h1>Open Amenities</h1>
+        <p class="brand-sub"><span id="council-name"></span></p>
+      </div>
+    </div>
+    <span class="sample-badge" title="Figures in this prototype are made up for demonstration">Prototype · sample data</span>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" id="sidebar" aria-label="Places and details">
+      <!-- Browse view -->
+      <section id="browse-view" class="view">
+        <div class="intro">
+          <h2>What do your local places cost?</h2>
+          <p>Pick a place on the map or in the list to see what it cost to build, what it costs each year, who looks after it and why it is there.</p>
+        </div>
+
+        <div class="controls">
+          <label class="visually-hidden" for="search">Search places or suburbs</label>
+          <div class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="search" type="search" placeholder="Search a place or suburb" autocomplete="off">
+          </div>
+
+          <fieldset class="chips" id="chips">
+            <legend class="visually-hidden">Show types of places</legend>
+          </fieldset>
+        </div>
+
+        <div class="summary" id="summary" aria-live="polite"></div>
+
+        <div class="list-head">
+          <h3 id="results-title">Places</h3>
+          <label class="sort">
+            <span>Sort by</span>
+            <select id="sort">
+              <option value="name">Name</option>
+              <option value="annual">Yearly cost (high to low)</option>
+              <option value="capital">Build cost (high to low)</option>
+              <option value="age">Oldest first</option>
+              <option value="perVisit">Cost per visit (high to low)</option>
+            </select>
+          </label>
+        </div>
+        <ul class="results" id="results" tabindex="-1" aria-labelledby="results-title"></ul>
+
+        <footer class="data-note">
+          <p><strong>About this data.</strong> <span id="data-source"></span> Updated <span id="data-updated"></span>.</p>
+        </footer>
+      </section>
+
+      <!-- Detail view -->
+      <section id="detail-view" class="view" hidden aria-labelledby="detail-title">
+        <div class="detail-top">
+          <button class="back" id="back" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            All places
+          </button>
+          <button class="share" id="share" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Copy link
+          </button>
+        </div>
+        <article id="detail" class="detail"></article>
+      </section>
+    </aside>
+
+    <section class="map-wrap" aria-label="Map of places">
+      <div id="map" role="application" aria-label="Map. Use the list for a keyboard friendly way to choose a place."></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="data/facilities.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
