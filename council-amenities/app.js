@@ -75,10 +75,11 @@
   // ---------- Map ----------
   const map = L.map("map", { zoomControl: false, attributionControl: true }).setView([-33.888, 151.2], 13);
   L.control.zoom({ position: "topright" }).addTo(map);
-  const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark ? "dark_all" : "light_all"}/{z}/{x}/{y}{r}.png`, {
+  // OpenStreetMap standard tiles: free for light use with attribution. Toned down in CSS
+  // so the category markers stand out, and inverted for dark mode.
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
   const markers = {};

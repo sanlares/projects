@@ -253,6 +253,11 @@ button, input, select { font: inherit; color: inherit; }
 .leaflet-marker-icon:focus-visible { outline: none; }
 .leaflet-marker-icon:focus-visible .marker { outline: 3px solid var(--focus); outline-offset: 3px; }
 .leaflet-container { font-family: inherit; }
+.leaflet-tile-pane { filter: saturate(.45) brightness(1.04); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.85) contrast(.9) saturate(.35); }
+}
+:root[data-theme="dark"] .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.85) contrast(.9) saturate(.35); }
 .leaflet-tooltip.map-label {
   font-weight: 600; font-size: .8rem; border-radius: 6px; padding: 4px 8px;
   border: 0; box-shadow: var(--shadow);
